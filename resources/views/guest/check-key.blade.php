@@ -15,6 +15,7 @@
                             <input type="text" class="form-control" name="key" id="key">
                         </div>
                         <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Check Key</button>
+                        <p><a href="{{ route('login') }}">Login</a> as admin if you have an admin account</p>
                     </form>
 
                 </div>
