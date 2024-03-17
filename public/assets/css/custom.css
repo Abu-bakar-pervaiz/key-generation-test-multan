@@ -1,0 +1,164 @@
+a#slider-images-preview{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#slider-images-preview img{
+    width: 18%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(90, 90, 90, 0.542);
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    margin: 10px 0;
+}
+#coverImageView{
+    aspect-ratio: 4/2;
+    object-fit: cover;
+}
+
+/* CK Editor styling */
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+
+
+/* Loader CSS */
+.loader-wrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 99;
+    background-color: white;
+    top: 0;
+    /* left: 25%; */
+}
+hr {
+    margin: auto;
+    width: 40%;
+}
+
+.loader {
+    width: 10em;
+    height: 10em;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-top: 0.3em solid hotpink;
+    border-radius: 50%;
+    position: relative;
+    animation: rotating 2s ease-in-out infinite;
+    --direction: 1;
+}
+
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+}
+
+.loader::before {
+    border-top: 0.3em solid dodgerblue;
+    transform: rotate(120deg);
+}
+
+.loader::after {
+    border-top: 0.3em solid gold;
+    transform: rotate(240deg);
+}
+
+.loader span {
+    position: absolute;
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-align: center;
+    flex-direction: column;
+    /* line-height: 10em; */
+    font-family: sans-serif;
+    animation: rotating 2s linear infinite;
+    --direction: -1;
+}
+
+.loader span small{
+    font-size: 12px;
+}
+
+@keyframes rotating {
+    50% {
+        transform: rotate(calc(180deg * var(--direction)));
+    }
+
+    100% {
+        transform: rotate(calc(360deg * var(--direction)));
+    }
+}
+/* Loader CSS */
+
+.gradient-background{
+    width: 100%;
+    background-size: 200% 200%;
+    animation: GradientAnimation 10s infinite;
+    background-image: linear-gradient(45deg, #0099CC, #5CD1D3, rgb(241, 240, 240), #00a780);
+  }
+  
+  @keyframes GradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  pre.description{
+    font: inherit;
+  }
+
+  /* Gradient Background CSS End */
+@media screen and (max-width:768px) {
+    .card-body{
+        padding: 5px;
+    }
+    .table{
+        width:100% important;
+    }
+    .table thead tr{
+        width: 100%;
+        display: none;
+    }
+    .table tr,.table tbody,.table{
+        width: 100% !important;
+    }
+    .table tbody,.table,.table tbody tr{
+        display:block !important;
+    }
+    .table th,.table td{
+        display: flex;
+        justify-content: space-between;
+        gap: 0 25px;
+        width: 100%;
+        padding: 5px;
+        border-bottom: 1px solid gray !important;
+    }
+    .table th::before,.table td::before{
+        content: attr(data-label);
+        text-transform: capitalize;
+        font-weight: 500;
+    }
+    .table tr td:last-child{
+        margin-bottom: 30px;
+    }
+}
