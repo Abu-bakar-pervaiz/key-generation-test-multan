@@ -28,3 +28,8 @@ Route::group(['prefix'=>'key','middleware'=>'auth'],function(){
 
 Route::view('key','guest.check-key')->name('key.check');
 Route::post('key/check',[KeyController::class,'check'])->name('key.check');
+
+// Redirect the Remaining Routes to default route
+Route::fallback(function() {
+    return redirect('key');
+});

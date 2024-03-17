@@ -35,7 +35,9 @@ class KeyController extends Controller
         $request->validate([
             'key' => 'required | regex:/^.{4}-.{4}-.{4}$/'
         ]);
-        $key = Key::where('key',$request->key)->first();
+        $key = Key::where('key',$request->key)
+        ->whereDate('expiry_date','>=',now())
+        ->first();
         if( !$key ){
             return back()->with('danger','invalid key given !!!');
         }
