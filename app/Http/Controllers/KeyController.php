@@ -33,22 +33,28 @@ class KeyController extends Controller
     public function check( Request $request ){
 
         $request->validate([
-            'key' => 'required | regex:/^.{4}-.{4}-.{4}$/'
+            'key' => 'required | regex:/^.{4}-.{4}-.{4}$/',
         ]);
         $key = Key::where('key',$request->key)
         ->whereDate('expiry_date','>=',now())
         ->first();
         if( !$key ){
-            return back()->with('danger','invalid key given !!!');
+            return response()->json([
+                'message' => 'invalid key given !!!'
+            ], 403);
         }
         if( $key->status === 0 ){
-            return back()->with('danger','this key is deactivated please try with another one !!!');
+            return response()->json([
+                'message' => 'this key is deactivated please try with another one !!!'
+            ], 403);
         }
         $key->decrement('usage_limit');
         if ( $key->usage_limit <= 0 ) {
             $key->update(['status' => 0]);
         }
-        return back()->with('success','thank you for varifying the key !!!');
+        return response()->json([
+            'message' => 'thank you for verifying the key !!!'
+        ], 200);
         
     }
 }
